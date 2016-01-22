@@ -4,8 +4,8 @@ Laravel Clyde
 _Image uploads and manipulation for Laravel, a wrapper around Glide_
 
 You can use the package to upload your images to local filesystem or S3 and display them on your site
-in various sizes. Thanks to [Glide](http://glide.thephpleague.com/1.0/api/quick-reference/) all manipulated
-images will be cached and reserved on subsequent visits.
+in various sizes. Thanks to [Glide](http://glide.thephpleague.com/) all manipulated images will be cached
+and reserved on subsequent visits.
 
 ![Clyde The Glide](https://s3-eu-west-1.amazonaws.com/laravel-clyde/Clyde-Drexler.png "Clyde The Glide")
 
