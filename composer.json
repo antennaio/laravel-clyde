@@ -1,0 +1,36 @@
+{
+    "name": "antennaio/laravel-clyde",
+    "description": "Image uploads and manipulation for Laravel, a wrapper around Glide",
+    "keywords": ["laravel", "images", "uploads"],
+    "license": "MIT",
+    "homepage": "https://github.com/antennaio/laravel-clyde",
+    "require": {
+        "league/glide": "^1.0",
+        "league/glide-symfony": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*",
+        "orchestra/testbench": "~3.0",
+        "mockery/mockery": "^0.9.4"
+    },
+    "authors": [
+        {
+            "name": "Kazik",
+            "email": "antenna@antenna.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Antennaio\\Clyde\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Antennaio\\Clyde\\Test\\": "tests"
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
