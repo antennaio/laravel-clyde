@@ -36,10 +36,7 @@ class ClydeServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('laravel-clyde-upload', function ($app) {
-            $clydeUpload = $app->make(ClydeUpload::class);
-            $clydeUpload->setDisk(config('clyde.source'));
-
-            return $clydeUpload;
+            return $app->make(ClydeUpload::class);
         });
     }
 }

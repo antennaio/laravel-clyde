@@ -2,12 +2,18 @@
 
 namespace Antennaio\Clyde;
 
+use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 use Illuminate\Contracts\Filesystem\FilesystemAdapter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ClydeUpload
 {
+    /**
+     * @var Config
+     */
+    protected $config;
+
     /**
      * @var Filesystem
      */
@@ -26,15 +32,17 @@ class ClydeUpload
     /**
      * Create a new ClydeUpload instance.
      *
+     * @param Config $config
      * @param Filesystem $files
      * @param FilenameGenerator $filename
      */
-    public function __construct(Filesystem $files, FilenameGenerator $filename)
+    public function __construct(Config $config, Filesystem $files, FilenameGenerator $filename)
     {
+        $this->config = $config;
         $this->files = $files;
         $this->filename = $filename;
 
-        $this->setDisk('local');
+        $this->setDisk($this->config->get('clyde.source'));
     }
 
     /**
@@ -74,7 +82,7 @@ class ClydeUpload
      */
     protected function buildPath($filename)
     {
-        return config('clyde.source_path_prefix') . DIRECTORY_SEPARATOR . $filename;
+        return $this->config->get('clyde.source_path_prefix') . DIRECTORY_SEPARATOR . $filename;
     }
 
     /**
