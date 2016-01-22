@@ -61,7 +61,7 @@ return [
      | If set to true, signed URLs will be generated as a security measure.
      |
      */
-    'secure_urls' => false,
+    'secure_urls' => true,
 
      /*
      |--------------------------------------------------------------------------
