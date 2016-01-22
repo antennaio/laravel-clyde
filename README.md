@@ -23,7 +23,7 @@ Add the service provider to config:
 // config/app.php
 'provider' => [
     ...
-    'Antennaio\Clyde\ClydeServiceProvider',
+    Antennaio\Clyde\ClydeServiceProvider::class,
     ...
 ];
 ```
@@ -34,8 +34,8 @@ If you intend to use facades, install those as well:
 // config/app.php
 'aliases' => [
     ...
-    'ClydeUpload' => 'Antennaio\Clyde\Facades\ClydeUpload',
-    'ClydeImage' => 'Antennaio\Clyde\Facades\ClydeImage',
+    'ClydeUpload' => Antennaio\Clyde\Facades\ClydeUpload::class,
+    'ClydeImage' => Antennaio\Clyde\Facades\ClydeImage::class,
     ...
 ];
 ```
