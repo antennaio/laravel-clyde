@@ -49,11 +49,12 @@ class ClydeUpload
      * Upload a file.
      *
      * @param UploadedFile $file
+     * @param string $filename
      * @return string
      */
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file, $filename = null)
     {
-        $filename = $this->filename->generate($file);
+        $filename = ($filename) ? $filename : $this->filename->generate($file);
 
         $this->disk->put(
             $this->buildPath($filename),
@@ -64,14 +65,25 @@ class ClydeUpload
     }
 
     /**
-     * Remove a file.
+     * Delete a file.
      *
      * @param string $filename
      * @return void
      */
-    public function remove($filename)
+    public function delete($filename)
     {
         $this->disk->delete($this->buildPath($filename));
+    }
+
+    /**
+     * Check if a file exists.
+     *
+     * @param string $filename
+     * @return boolean
+     */
+    public function exists($filename)
+    {
+        return $this->disk->exists($this->buildPath($filename));
     }
 
     /**
