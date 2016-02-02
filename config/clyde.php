@@ -71,7 +71,7 @@ return [
      | A 128 character (or longer) signing key is recommended.
      |
      */
-    'sign_key' => config('app.key'),
+    'sign_key' => env('APP_KEY', 'SomeRandomString'),
 
      /*
      |--------------------------------------------------------------------------
