@@ -2,9 +2,9 @@
 
 namespace Antennaio\Clyde\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use League\Glide\Responses\SymfonyResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureFactory;
