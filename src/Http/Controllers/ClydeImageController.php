@@ -46,10 +46,10 @@ class ClydeImageController extends Controller
 
         $server = ServerFactory::create([
             'source' => $this->files->disk(config('clyde.source'))->getDriver(),
-            'cache' => $this->files->disk(config('clyde.cache'))->getDriver(),
-            'watermarks' => $this->files->disk(config('clyde.watermarks'))->getDriver(),
             'source_path_prefix' => config('clyde.source_path_prefix'),
+            'cache' => $this->files->disk(config('clyde.cache'))->getDriver(),
             'cache_path_prefix' => config('clyde.cache_path_prefix'),
+            'watermarks' => $this->files->disk(config('clyde.watermarks'))->getDriver(),
             'watermarks_path_prefix' => config('clyde.watermarks_path_prefix'),
             'max_image_size' => config('clyde.max_image_size'),
             'presets' => config('clyde.presets'),
