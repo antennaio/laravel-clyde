@@ -51,7 +51,7 @@ php artisan vendor:publish --provider="Antennaio\Clyde\ClydeServiceProvider"
 You can use dependency injection or facades, it's up to you.
 
 ```php
-use Antennaio\Clyde\ClydeImage;
+use Antennaio\Clyde\ClydeUpload;
 
 ...
 
