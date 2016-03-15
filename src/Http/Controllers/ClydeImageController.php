@@ -51,6 +51,7 @@ class ClydeImageController extends Controller
             'cache_path_prefix' => config('clyde.cache_path_prefix'),
             'watermarks' => $this->files->disk(config('clyde.watermarks'))->getDriver(),
             'watermarks_path_prefix' => config('clyde.watermarks_path_prefix'),
+            'driver' => config('clyde.driver'),
             'max_image_size' => config('clyde.max_image_size'),
             'presets' => config('clyde.presets'),
             'response' => new SymfonyResponseFactory()
