@@ -32,8 +32,8 @@ class ClydeUpload
     /**
      * Create a new ClydeUpload instance.
      *
-     * @param Config $config
-     * @param Filesystem $files
+     * @param Config            $config
+     * @param Filesystem        $files
      * @param FilenameGenerator $filename
      */
     public function __construct(Config $config, Filesystem $files, FilenameGenerator $filename)
@@ -49,7 +49,8 @@ class ClydeUpload
      * Upload a file.
      *
      * @param UploadedFile $file
-     * @param string $filename
+     * @param string       $filename
+     *
      * @return string
      */
     public function upload(UploadedFile $file, $filename = null)
@@ -68,7 +69,6 @@ class ClydeUpload
      * Delete a file.
      *
      * @param string $filename
-     * @return void
      */
     public function delete($filename)
     {
@@ -79,7 +79,8 @@ class ClydeUpload
      * Check if a file exists.
      *
      * @param string $filename
-     * @return boolean
+     *
+     * @return bool
      */
     public function exists($filename)
     {
@@ -90,18 +91,18 @@ class ClydeUpload
      * Build path.
      *
      * @param string $filename
+     *
      * @return string
      */
     protected function buildPath($filename)
     {
-        return $this->config->get('clyde.source_path_prefix') . DIRECTORY_SEPARATOR . $filename;
+        return $this->config->get('clyde.source_path_prefix').DIRECTORY_SEPARATOR.$filename;
     }
 
     /**
      * Set disk.
      *
      * @param string $disk
-     * @return void
      */
     public function setDisk($disk)
     {
@@ -112,7 +113,6 @@ class ClydeUpload
      * Get disk.
      *
      * @return string
-     * @return void
      */
     public function getDisk()
     {

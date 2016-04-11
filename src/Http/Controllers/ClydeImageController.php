@@ -29,7 +29,8 @@ class ClydeImageController extends Controller
      * Display image.
      *
      * @param Request $request
-     * @param string $filename
+     * @param string  $filename
+     *
      * @return mixed
      */
     public function show(Request $request, $filename)
@@ -38,7 +39,6 @@ class ClydeImageController extends Controller
             try {
                 SignatureFactory::create(config('clyde.sign_key'))
                     ->validateRequest($request->path(), $request->all());
-
             } catch (SignatureException $e) {
                 return response()->json('Sorry, URL signature is invalid.');
             }
@@ -54,7 +54,7 @@ class ClydeImageController extends Controller
             'driver' => config('clyde.driver'),
             'max_image_size' => config('clyde.max_image_size'),
             'presets' => config('clyde.presets'),
-            'response' => new SymfonyResponseFactory()
+            'response' => new SymfonyResponseFactory(),
         ]);
 
         return $server->outputImage($filename, $request->all());

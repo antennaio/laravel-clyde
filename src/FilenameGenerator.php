@@ -10,10 +10,11 @@ class FilenameGenerator
      * Generate a filename.
      *
      * @param UploadedFile $file
+     *
      * @return string
      */
     public function generate(UploadedFile $file)
     {
-        return uniqid() . '.' . $file->getClientOriginalExtension();
+        return uniqid().'.'.$file->getClientOriginalExtension();
     }
 }

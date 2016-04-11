@@ -20,8 +20,9 @@ class ClydeImage
     /**
      * Return signed url or a basic url depending on settings.
      *
-     * @param string $filename
+     * @param string       $filename
      * @param string|array $manipulations
+     *
      * @return string
      */
     public function url($filename, $manipulations = [])
@@ -41,6 +42,7 @@ class ClydeImage
      * Check if string is matching a preset.
      *
      * @param string $preset
+     *
      * @return array
      */
     protected function handlePresets($preset)
@@ -56,7 +58,8 @@ class ClydeImage
      * Return signed url.
      *
      * @param string $filename
-     * @param array $manipulations
+     * @param array  $manipulations
+     *
      * @return string
      */
     protected function secureUrl($filename, $manipulations)
@@ -72,7 +75,8 @@ class ClydeImage
      * Return basic url.
      *
      * @param string $filename
-     * @param array $manipulations
+     * @param array  $manipulations
+     *
      * @return string
      */
     protected function basicUrl($filename, $manipulations)
