@@ -49,58 +49,58 @@ class ClydeUpload
      * Upload a file.
      *
      * @param UploadedFile $file
-     * @param string       $filename
+     * @param string       $filePath
      *
      * @return string
      */
-    public function upload(UploadedFile $file, $filename = null)
+    public function upload(UploadedFile $file, $filePath = null)
     {
-        $filename = ($filename) ? $filename : $this->filename->generate($file);
+        $filePath = ($filePath) ? $filePath : $this->filename->generate($file);
 
         $this->disk->put(
-            $this->buildPath($filename),
+            $this->buildPath($filePath),
             fopen($file->getRealPath(), 'r+')
         );
 
-        return $filename;
+        return $filePath;
     }
 
     /**
      * Delete a file.
      *
-     * @param string $filename
+     * @param string $filePath
      */
-    public function delete($filename)
+    public function delete($filePath)
     {
-        $this->disk->delete($this->buildPath($filename));
+        $this->disk->delete($this->buildPath($filePath));
     }
 
     /**
      * Check if a file exists.
      *
-     * @param string $filename
+     * @param string $filePath
      *
      * @return bool
      */
-    public function exists($filename)
+    public function exists($filePath)
     {
-        if (empty($filename)) {
+        if (empty($filePath)) {
             return false;
         }
 
-        return $this->disk->exists($this->buildPath($filename));
+        return $this->disk->exists($this->buildPath($filePath));
     }
 
     /**
      * Build path.
      *
-     * @param string $filename
+     * @param string $filePath
      *
      * @return string
      */
-    protected function buildPath($filename)
+    protected function buildPath($filePath)
     {
-        return $this->config->get('clyde.source_path_prefix').DIRECTORY_SEPARATOR.$filename;
+        return $this->config->get('clyde.source_path_prefix').DIRECTORY_SEPARATOR.$filePath;
     }
 
     /**

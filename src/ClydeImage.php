@@ -20,22 +20,22 @@ class ClydeImage
     /**
      * Return signed url or a basic url depending on settings.
      *
-     * @param string       $filename
+     * @param string       $filePath
      * @param string|array $manipulations
      *
      * @return string
      */
-    public function url($filename, $manipulations = [])
+    public function url($filePath, $manipulations = [])
     {
         $manipulations = (is_string($manipulations)) ?
             $this->handlePresets($manipulations) :
             $manipulations;
 
         if ($this->config->get('clyde.secure_urls')) {
-            return $this->secureUrl($filename, $manipulations);
+            return $this->secureUrl($filePath, $manipulations);
         }
 
-        return $this->basicUrl($filename, $manipulations);
+        return $this->basicUrl($filePath, $manipulations);
     }
 
     /**
@@ -57,14 +57,14 @@ class ClydeImage
     /**
      * Return signed url.
      *
-     * @param string $filename
+     * @param string $filePath
      * @param array  $manipulations
      *
      * @return string
      */
-    protected function secureUrl($filename, $manipulations)
+    protected function secureUrl($filePath, $manipulations)
     {
-        $url = route($this->config->get('clyde.route_name'), ['filename' => $filename], false);
+        $url = route($this->config->get('clyde.route_name'), ['filename' => $filePath], false);
 
         $urlBuilder = UrlBuilderFactory::create('/', $this->config->get('clyde.sign_key'));
 
@@ -74,14 +74,14 @@ class ClydeImage
     /**
      * Return basic url.
      *
-     * @param string $filename
+     * @param string $filePath
      * @param array  $manipulations
      *
      * @return string
      */
-    protected function basicUrl($filename, $manipulations)
+    protected function basicUrl($filePath, $manipulations)
     {
-        $params = array_merge(['filename' => $filename], $manipulations);
+        $params = array_merge(['filename' => $filePath], $manipulations);
 
         return route($this->config->get('clyde.route_name'), $params, false);
     }
