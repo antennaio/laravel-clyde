@@ -84,7 +84,11 @@ class ClydeUpload
      */
     public function exists($filename)
     {
-        return empty($filename) ? false : $this->disk->exists($this->buildPath($filename));
+        if (empty($filename)) {
+            return false;
+        }
+
+        return $this->disk->exists($this->buildPath($filename));
     }
 
     /**
