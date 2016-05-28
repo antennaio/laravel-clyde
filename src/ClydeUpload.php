@@ -2,6 +2,7 @@
 
 namespace Antennaio\Clyde;
 
+use Closure;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 use Illuminate\Contracts\Filesystem\FilesystemAdapter;
@@ -48,14 +49,14 @@ class ClydeUpload
     /**
      * Upload a file.
      *
-     * @param UploadedFile $file
-     * @param string       $filePath
+     * @param UploadedFile         $file
+     * @param \Closure|string|null $filePath
      *
      * @return string
      */
     public function upload(UploadedFile $file, $filePath = null)
     {
-        $filePath = ($filePath) ? $filePath : $this->filename->generate($file);
+        $filePath = $this->resolveFilePath($filePath, $this->filename->generate($file));
 
         $this->disk->put(
             $this->buildPath($filePath),
@@ -63,6 +64,23 @@ class ClydeUpload
         );
 
         return $filePath;
+    }
+
+    /**
+     * Resolve file path.
+     *
+     * @param \Closure|string|null $filePath
+     * @param string               $suggestedFilename
+     *
+     * @return string
+     */
+    protected function resolveFilePath($filePath, $suggestedFilename)
+    {
+        if ($filePath instanceof Closure) {
+            $filePath = $filePath($suggestedFilename);
+        }
+
+        return is_null($filePath) ? $suggestedFilename : $filePath;
     }
 
     /**
