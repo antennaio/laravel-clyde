@@ -2,6 +2,7 @@
 
 namespace Antennaio\Clyde;
 
+use Antennaio\Clyde\Facades\Server;
 use Closure;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
@@ -87,10 +88,17 @@ class ClydeUpload
      * Delete a file.
      *
      * @param string $filePath
+     * @param bool   $deleteCache
+     *
+     * @return bool
      */
-    public function delete($filePath)
+    public function delete($filePath, $deleteCache = true)
     {
-        $this->disk->delete($this->buildPath($filePath));
+        if ($deleteCache) {
+            Server::deleteCache($filePath);
+        }
+
+        return $this->disk->delete($this->buildPath($filePath));
     }
 
     /**
