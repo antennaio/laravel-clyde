@@ -14,7 +14,7 @@ and reserved on subsequent visits.
 Install through composer:
 
 ```
-composer require antennaio/laravel-clyde
+composer require antennaio/laravel-clyde:~0.0.1
 ```
 
 Add the service provider to config:
