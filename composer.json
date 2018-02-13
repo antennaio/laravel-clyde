@@ -34,6 +34,17 @@
             "Antennaio\\Clyde\\Test\\": "tests"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Antennaio\\Clyde\\ClydeServiceProvider"
+            ],
+            "aliases": {
+                "ClydeUpload": "Antennaio\\Clyde\\Facades\\ClydeUpload",
+                "ClydeImage": "Antennaio\\Clyde\\Facades\\ClydeImage"
+            }
+        }
+    },
     "minimum-stability": "stable",
     "scripts": {
         "test": "vendor/bin/phpunit"
