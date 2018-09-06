@@ -1,9 +1,9 @@
 {
-    "name": "antennaio/laravel-clyde",
+    "name": "pherum/laravel-clyde",
     "description": "Image uploads and manipulation for Laravel, a wrapper around Glide",
     "keywords": ["laravel", "php", "images", "upload", "resize", "cache", "glide"],
     "license": "MIT",
-    "homepage": "https://github.com/antennaio/laravel-clyde",
+    "homepage": "https://github.com/pherum/laravel-clyde",
     "require": {
         "illuminate/config": "^5.1",
         "illuminate/contracts": "^5.1",
